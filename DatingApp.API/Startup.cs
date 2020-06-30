@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DatinApp.API.Properties.Data;
+using DatingApp.API.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,7 @@ namespace DatinApp.API
         {
             services.AddControllers();
             services.AddCors();
+            services.AddScoped<IAuthRepository, AuthRepository> ();
             services.AddDbContext<DataContext>(x  =>  x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
         }
 
